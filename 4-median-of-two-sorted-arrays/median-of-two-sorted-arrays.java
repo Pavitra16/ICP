@@ -1,8 +1,14 @@
 class Solution {
     public double findMedianSortedArrays(int[] a, int[] b) {
+        if(a.length>b.length){
+            int temp[]=a;
+            a=b;
+            b=temp;
+        }
         int n=a.length;
         int m=b.length;
-       if(n>m) return findMedianSortedArrays(b,a);
+        //if(n>m) return findMedianSortedArrays(b,a);
+      
         int lo=0;
         int hi=n;
         int total=n+m;
