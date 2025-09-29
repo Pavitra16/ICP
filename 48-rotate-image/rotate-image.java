@@ -16,16 +16,15 @@ class Solution {
     public void reverse(int a[][]){
         int n=a.length;
         for(int i=0;i<n;i++){
-            int si=0;
-            int ei=n-1;
-            while(si<=ei){
-                int temp=a[i][si];
-                a[i][si]=a[i][ei];
-                a[i][ei]=temp;
-                si++;
-                ei--;
+            int s=0;
+            int e=n-1;
+            while(s<=e){
+                int temp=a[i][s];
+                a[i][s]=a[i][e];
+                a[i][e]=temp;
+                s++;
+                e--;
             }
         }
-        
     }
 }
