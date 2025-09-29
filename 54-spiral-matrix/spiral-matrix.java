@@ -1,38 +1,41 @@
 class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer>lst=new ArrayList<>();
-        solve(matrix,lst);
-        return lst;
-    }
-    public void solve(int a[][], List<Integer>lst){
-        int n=a.length;
-        int m=a[0].length;
-        int cr=0;
-        int cc=0;
-        int er=n-1;
-        int ec=m-1;
-        int total=n*m;
-        while(cr<n && cc<m && er>=0 && ec>=0 && total>0){
-            for(int i=cc;i<=ec && total>0;i++){
-                lst.add(a[cr][i]);
-                total--;
+    public List<Integer> spiralOrder(int[][] a) {
+        List<Integer> lst = new ArrayList<Integer>();
+        int m=a.length;
+        int n=a[0].length;
+        int total=m*n;
+        int minr=0;
+        int minc=0;
+        int maxr=m-1;
+        int maxc=n-1;
+        int count=0;
+        while(count<total)
+        {
+            for(int i=minc;i<=maxc && count<total;i++)
+            {
+                lst.add(a[minr][i]);
+                count++;
             }
-            cr++;
-            for(int i=cr;i<=er && total>0;i++){
-                lst.add(a[i][ec]);
-                total--;
+            minr++;
+            for(int i=minr;i<=maxr && count<total;i++)
+            {
+                lst.add(a[i][maxc]);
+                count++;
             }
-            ec--;
-            for(int i=ec;i>=cc && total>0;i--){
-                lst.add(a[er][i]);
-                total--;
+            maxc--;
+            for(int i=maxc;i>=minc && count<total;i--)
+            {
+                lst.add(a[maxr][i]);
+                count++;
             }
-            er--;
-            for(int i=er;i>=cr && total>0;i--){
-                lst.add(a[i][cc]);
-                total--;
+            maxr--;
+            for(int i=maxr;i>=minr && count<total;i--)
+            {
+                lst.add(a[i][minc]);
+                count++;
             }
-            cc++;
+            minc++;
         }
+        return lst;
     }
 }
