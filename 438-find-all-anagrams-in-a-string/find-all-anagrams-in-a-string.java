@@ -1,31 +1,27 @@
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-        if(p.length()>s.length()){
-            return new ArrayList<>();
+        
+        int a[]=new int[26];
+        int b[]=new int[26];
+        List<Integer>lst=new ArrayList<>();
+        if(p.length()>s.length()) return lst;
+        int k=p.length();
+        for(int i=0;i<k;i++){
+            a[p.charAt(i)-'a']++;
+            b[s.charAt(i)-'a']++;
         }
-        int[] freq=new int[26];
-        for(int i=0;i<p.length();i++){
-            freq[p.charAt(i)-'a']++;
+        if(check(a,b)) lst.add(0);
+        for(int i=k;i<s.length();i++){
+            b[s.charAt(i)-'a']++;
+            b[s.charAt(i-k)-'a']--;
+            if(check(a,b)) lst.add(i-k+1);
         }
-        int[] arr=new int[26];
-        List<Integer> list=new ArrayList<>();
-        for(int i=0;i<p.length();i++){
-            arr[s.charAt(i)-'a']++;
+        return lst;
+    }
+    public boolean check(int a[], int b[]){
+        for(int i=0;i<26;i++){
+            if(a[i]!=b[i]) return false;
         }
-        int left = 0;
-        if(Arrays.equals(freq,arr)){
-            list.add(left);
-        }
-        int right=p.length();
-        while(right<s.length()){
-            arr[s.charAt(right)-'a']++;  
-            arr[s.charAt(left)-'a']--;  
-            left++;                         
-            right++;
-            if(Arrays.equals(freq,arr)){
-                list.add(left);
-            }
-        }
-        return list;
+        return true;
     }
 }
