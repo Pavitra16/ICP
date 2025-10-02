@@ -5,8 +5,8 @@ class Solution {
         return ans;
     }
     public int solve(int a[], int k){
-                int i=0;
-                HashMap<Integer,Integer>hm=new HashMap<>();
+        int i=0;
+        HashMap<Integer,Integer>hm=new HashMap<>();
         int j=0;
         int n=a.length;
         int ans=0;
