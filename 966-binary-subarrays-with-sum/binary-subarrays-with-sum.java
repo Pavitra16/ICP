@@ -6,15 +6,16 @@ class Solution {
         int sum=0;
         int i=0;
         int c=0;
+        int j=0;
         if(goal<0) return 0;
-        for(int j=0;j<n.length;j++){
+        while(j<n.length){
             sum+=n[j];
             while(sum>goal){
                 sum-=n[i];
                 i++;
             }
             c+=(j-i+1);
-            
+            j++;
         
         }
         return c;
